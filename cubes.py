@@ -32,8 +32,18 @@ def build_cube(cube_string, n):
     
 def get_hole_in_wall(cube, n, floor_number):
     '''
-    to do
+    gets the [row, col] of entrances/exits
     '''
+    for pos in xrange(n):
+        if cube[floor_number][0][pos] == ' ':
+            return (floor_number,0,pos)
+        if cube[floor_number][n-1][pos] == ' ':
+            return (floor_number,n-1, pos)
+        if cube[floor_number][pos][0] == ' ':
+            return (floor_number,pos, 0)
+        if cube[floor_number][pos][n-1] == ' ':
+            return (floor_number,pos, n-1)
+    sys.exit('Entrance not found')
     
 def solve_cube(cube, n):
     '''
